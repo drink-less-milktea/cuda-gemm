@@ -1,0 +1,6 @@
+build/
+*.o
+*.csv
+*.nsys-rep
+*.sqlite
+.DS_Store
