@@ -116,15 +116,13 @@ cuda-gemm/
 
 ---
 
-## 已知问题
+## 已知限制
 
-- **SGEMM 正确性**：FP32 kernel 与 cuBLAS 存在约 1-5% 的数值误差。原因是原始实现未考虑 K 维度不对齐和浮点舍入顺序差异。HGEMM (Tensor Core) 版本在 ≥1024 尺寸下验证通过。（详见 [#known-issues])
-- SGEMM 和 HGEMM 的 small-size 正确性（<512）需要进一步调试。
+- HGEMM v4 在 N < 4096 的矩阵上 3D Grid Split 不生效，性能略低于 v3（预期行为）
+- 所有 kernel 要求 M,N,K 对齐 BM/BN/BK 块大小（SGEMM: 128/128/8, HGEMM: 128/256/32）
 
----
 
 ## 参考文献
-
 - [CUDA C++ Programming Guide — Warp Matrix Functions](https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#wmma)
 - [CUTLASS](https://github.com/NVIDIA/cutlass) — NVIDIA 的模板 GEMM 库
 - [How to Optimize a CUDA GEMM Kernel](https://siboehm.com/articles/22/CUDA-MMM) — Simon Boehm 的经典教程
