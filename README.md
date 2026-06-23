@@ -21,7 +21,7 @@
 | **覆盖技术** | Shared Mem Tiling, Bank Conflict Avoidance, Double Buffering, WMMA, cp.async, 3D Grid Split |
 | **硬件指标** | Nsight Compute: SM throughput 45%, DRAM 12.5% (compute-bound), L1/TEX 50% (bottleneck) |
 | **测试框架** | 正确性验证 (vs cuBLAS) + 64 尺寸 benchmark + CSV 输出 |
-| **文档** | [`OPTIMIZATION.md`](docs/OPTIMIZATION.md) 面试讲稿级详解 + [`PERFORMANCE.md`](docs/PERFORMANCE.md) profiling 数据 |
+| **文档** | [`OPTIMIZATION.md`](docs/OPTIMIZATION.md) 优化原理详解 + [`PERFORMANCE.md`](docs/PERFORMANCE.md) profiling 数据 |
 
 ---
 
@@ -104,19 +104,19 @@ cuda-gemm/
 
 ## 关键技术索引
 
-| 技术 | 使用版本 | 面试价值 |
-|------|---------|---------|
-| Shared Memory Tiling | SGEMM v1,v2,v3 / HGEMM 全版本 | ⭐⭐⭐⭐⭐ |
-| Float4 向量化 | SGEMM v1,v2,v3 / HGEMM v1 | ⭐⭐⭐⭐ |
-| Thread Coarsening (TM×TN) | SGEMM v1,v2,v3 | ⭐⭐⭐⭐ |
-| Bank Conflict Avoidance | SGEMM v2 | ⭐⭐⭐⭐ |
-| Register Buffering | SGEMM v2,v3 | ⭐⭐⭐ |
-| Double Buffering | SGEMM v3 / HGEMM v3,v4 | ⭐⭐⭐⭐⭐ |
-| Dynamic Shared Memory | HGEMM v3,v4 | ⭐⭐⭐ |
-| WMMA (Tensor Core) | HGEMM 全版本 | ⭐⭐⭐⭐⭐ |
-| cp.async (异步拷贝) | HGEMM v2,v3,v4 | ⭐⭐⭐⭐⭐ |
-| cp.async.cg (Cache Bypass) | HGEMM v4 | ⭐⭐⭐ |
-| 3D Grid Split | HGEMM v4 | ⭐⭐⭐ |
+| 技术 | 使用版本 |
+|------|---------|
+| Shared Memory Tiling | SGEMM v1,v2,v3 / HGEMM 全版本 |
+| Float4 向量化 | SGEMM v1,v2,v3 / HGEMM v1 |
+| Thread Coarsening (TM×TN) | SGEMM v1,v2,v3 |
+| Bank Conflict Avoidance | SGEMM v2 |
+| Register Buffering | SGEMM v2,v3 |
+| Double Buffering | SGEMM v3 / HGEMM v3,v4 |
+| Dynamic Shared Memory | HGEMM v3,v4 |
+| WMMA (Tensor Core) | HGEMM 全版本 |
+| cp.async (异步拷贝) | HGEMM v2,v3,v4 |
+| cp.async.cg (Cache Bypass) | HGEMM v4 |
+| 3D Grid Split | HGEMM v4 |
 
 ---
 
